@@ -1,5 +1,47 @@
 from gym.envs.registration import registry, register, make, spec
 
+# Rotors
+# ----------------------------------------
+register(
+    id='racingdrone-latent_mono-v0',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'latent_dim': 64, 'input_channel':1, 'offset_throttle': 0.5}
+)
+
+register(
+    id='racingdrone-latent_bino-v0',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'model': 'VAE', 'observation_mode': 'latent_bino', 'latent_dim': 64, 'input_channel':2,'offset_throttle': 0.5}
+)
+
+register(
+    id='racingdrone-latent_bino-v1',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'model': 'ViAE', 'observation_mode': 'latent_bino', 'latent_dim': 22, 'input_channel':2, 'offset_throttle': 0.5}
+)
+
+register(
+    id='racingdrone-img_mono-v0',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'observation_mode': 'img_mono', 'input_channel':1, 'offset_throttle': 0.5}
+)
+
+register(
+    id='racingdrone-img_bino-v0',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'observation_mode': 'img_bino', 'input_channel':2, 'offset_throttle': 0.5}
+)
+
 # Algorithmic
 # ----------------------------------------
 
