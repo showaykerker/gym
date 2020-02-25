@@ -8,7 +8,7 @@ register(
     entry_point='gym.envs.rotors:EnvWrapper',
     max_episode_steps=200,
     reward_threshold=25.0,
-    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'latent_dim': 64, 'input_channel':1, 'offset_throttle': 0.5}
+    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'offset_throttle': 0.5}
 )
 
 register(
@@ -16,7 +16,7 @@ register(
     entry_point='gym.envs.rotors:EnvWrapper',
     max_episode_steps=200,
     reward_threshold=25.0,
-    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'latent_dim': 16, 'input_channel':1, 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
+    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
 )
 
 register(
@@ -24,7 +24,7 @@ register(
     entry_point='gym.envs.rotors:EnvWrapper',
     max_episode_steps=200,
     reward_threshold=25.0,
-    kwargs={'model': 'VAE', 'observation_mode': 'latent_bino', 'latent_dim': 64, 'input_channel':2,'offset_throttle': 0.5}
+    kwargs={'model': 'VAE', 'observation_mode': 'latent_bino', 'offset_throttle': 0.5}
 )
 
 register(
@@ -32,7 +32,15 @@ register(
     entry_point='gym.envs.rotors:EnvWrapper',
     max_episode_steps=200,
     reward_threshold=25.0,
-    kwargs={'model': 'ViAE', 'observation_mode': 'latent_bino', 'latent_dim': 16, 'input_channel':2, 'offset_throttle': 0.46}
+    kwargs={'model': 'ViAE', 'observation_mode': 'latent_bino', 'offset_throttle': 0.46}
+)
+
+register(
+    id='racingdrone-latent_bino_h6-v1',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'model': 'ViAE', 'observation_mode': 'latent_bino', 'offset_throttle': 0.46, 'n_history': 6}
 )
 
 register(
@@ -40,7 +48,7 @@ register(
     entry_point='gym.envs.rotors:EnvWrapper',
     max_episode_steps=200,
     reward_threshold=25.0,
-    kwargs={'observation_mode': 'img_mono', 'input_channel':1, 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
+    kwargs={'observation_mode': 'img_mono', 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
 )
 
 register(
@@ -48,7 +56,7 @@ register(
     entry_point='gym.envs.rotors:EnvWrapper',
     max_episode_steps=200,
     reward_threshold=25.0,
-    kwargs={'observation_mode': 'img_bino', 'input_channel':2, 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
+    kwargs={'observation_mode': 'img_bino', 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
 )
 
 # Algorithmic
