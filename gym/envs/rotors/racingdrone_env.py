@@ -24,10 +24,7 @@ def to_numpy(tensor):
 
 class EnvWrapper(sve):
 
-	ob_mode_enum = ['latent_mono', 'latent_bino', 'img_mono', 'img_bino', None]
-	weight_path = { 'VAE': '/media/storage1/rdpg_drone_data/encoder_model/e02_0213_mono_ep440_L16.pt',
-					'ViAE': '/media/storage1/rdpg_drone_data/encoder_model/CMe02_0213_bino_ep390_L16.pt'
-				  }
+	ob_mode_enum = ['latent_mono', 'latent_bino', 'img_mono', 'img_bino', 'info_arr', 'info_rtpp', 'info_dict', None]
 
 	def __init__(self, *args, **kwargs):
 		observation_mode = kwargs.get('observation_mode')
@@ -44,7 +41,8 @@ class EnvWrapper(sve):
 
 
 	def render(self, *args, **kwargs):
-				
+		return
+		#if not self.to_render: return	
 		if self.to_render and hasattr(self, 'last_latents'):
 			# print(self.last_latent)
 			# print(self.last_latent.min(), self.last_latent.max())
@@ -77,19 +75,3 @@ class EnvWrapper(sve):
 				self.to_render = False
 				cv2.destroyAllWindows()
 
-	# def render(self, *args, **kwargs):
-				
-	# 	if self.to_render and hasattr(self, 'last_latent'):
-	# 		# print(self.last_latent)
-	# 		# print(self.last_latent.min(), self.last_latent.max())
-	# 		img = self.loader.model.decode(self.last_latent.to(self.device))
-	# 		try:
-	# 			cv2.imshow('decoded%s'%self.env_suffix, (to_numpy(img.view(120, 192)*255)).astype(np.uint8))
-	# 		except:
-	# 			img = torch.cat([img[0,0], img[0, 1]], dim=1)
-	# 			cv2.imshow('decoded%s'%self.env_suffix, (to_numpy(img*255)).astype(np.uint8))
-	# 		k = cv2.waitKey(1)
-	# 		if k == ord('q'):
-	# 			self.loader.model.rm_decoder_part()
-	# 			self.to_render = False
-	# 			cv2.destroyAllWindows()
