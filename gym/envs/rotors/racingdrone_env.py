@@ -30,7 +30,6 @@ class EnvWrapper(sve):
 		observation_mode = kwargs.get('observation_mode')
 		assert observation_mode in self.ob_mode_enum, 'observation_mode must be one of following: %s' % self.ob_mode_enum
 		super(EnvWrapper, self).__init__(*args, **kwargs)
-		self.n_gates_once = 1
 
 	def step(self, action):
 		try: self.render()
