@@ -40,8 +40,7 @@ class EnvWrapper(sve):
 
 
 	def render(self, *args, **kwargs):
-		return
-		#if not self.to_render: return	
+		
 		if self.to_render and hasattr(self, 'last_latents'):
 			# print(self.last_latent)
 			# print(self.last_latent.min(), self.last_latent.max())

@@ -6,7 +6,7 @@ from gym.envs.registration import registry, register, make, spec
 register(
     id='racingdrone-info-v0',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'observation_mode': 'info_arr', 'offset_throttle': 0.47}
 )
@@ -14,7 +14,7 @@ register(
 register(
     id='racingdrone-info-v1',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=300,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'observation_mode': 'info_arr', 'control_mode': 'vel'}
 )
@@ -22,7 +22,7 @@ register(
 register(
     id='racingdrone-info_rtpp-v1',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=300,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'observation_mode': 'info_rtpp', 'control_mode': 'vel'}
 )
@@ -30,7 +30,7 @@ register(
 register(
     id='racingdrone-latent_mono-v0',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'offset_throttle': 0.47}
 )
@@ -38,23 +38,15 @@ register(
 register(
     id='racingdrone-latent_mono-v1',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'control_mode': 'vel'}
 )
 
 register(
-    id='racingdrone-latent_mono-mthreads-v0',
-    entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
-    reward_threshold=25.0,
-    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
-)
-
-register(
     id='racingdrone-latent_bino-v0',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'model': 'VAE', 'observation_mode': 'latent_bino', 'offset_throttle': 0.5}
 )
@@ -62,15 +54,16 @@ register(
 register(
     id='racingdrone-latent_bino-v1',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=300,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'model': 'binoVAE', 'observation_mode': 'latent_bino', 'control_mode': 'vel'}
+    #kwargs={'model': 'ViAE', 'observation_mode': 'latent_bino', 'control_mode': 'vel'}
 )
 
 register(
     id='racingdrone-latent_bino_h6-v1',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'model': 'ViAE', 'observation_mode': 'latent_bino', 'n_history': 6, 'control_mode': 'vel'}
 )
@@ -78,9 +71,25 @@ register(
 register(
     id='racingdrone-latent_mono_h6-v1',
     entry_point='gym.envs.rotors:EnvWrapper',
-    max_episode_steps=200,
+    max_episode_steps=2000,
     reward_threshold=25.0,
     kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'n_history': 6, 'control_mode': 'vel'}
+)
+
+register(
+    id='racingdrone-latent_mono-mthreads-v0',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=2000,
+    reward_threshold=25.0,
+    kwargs={'model': 'VAE', 'observation_mode': 'latent_mono', 'offset_throttle': 0.5, 'wait_for_worker_id_assignment': True}
+)
+
+register(
+    id='racingdrone-img_mono-v1',
+    entry_point='gym.envs.rotors:EnvWrapper',
+    max_episode_steps=200,
+    reward_threshold=25.0,
+    kwargs={'observation_mode': 'img_mono', 'control_mode': 'vel'}
 )
 
 

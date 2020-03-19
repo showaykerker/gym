@@ -79,6 +79,7 @@ class EnvRegistry(object):
         self.env_specs = {}
 
     def make(self, path, **kwargs):
+
         if len(kwargs) > 0:
             logger.info('Making new env: %s (%s)', path, kwargs)
         else:
